@@ -98,9 +98,6 @@ function makeSmartPerson(name) {
 
 
 
-
-
-
 /*
 // ⭐️ Example Test Data ⭐️
 
@@ -163,12 +160,6 @@ function getCarInfoByIndex(inventory, index) {
 
 
 
-
-
-
-
-
-
 /**
  * ### Challenge `getLastCarInfo`
  * 
@@ -180,12 +171,15 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
 */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+// function getLastCarInfo(/* code here */) {
+//   /* code here */
+// }
+
+function getLastCarInfo(inventory) {
+  const vehicle = inventory[inventory.length-1]
+  return `The is a ${vehicle.car_make} ${vehicle.car_model}`
+
 }
-
-
-
 
 
 /**
@@ -200,9 +194,19 @@ function getLastCarInfo(/* code here */) {
  * For example, if getCarInfoById is invoked with the inventory and the number 1,
  * it will return `This is a Lincoln Navigator`.
 */
-function getCarInfoById(/* code here */) {
-  /* code here */
+// function getCarInfoById(/* code here */) {
+//   /* code here */
+
+  
+// }
+
+function getCarInfoById(inventory, id) {
+  return `This is a ${inventory[id-1].car_make} ${inventory[id-1].car_model}`
+
 }
+
+
+
 
 /**
  * ### Challenge `sortCarInventory`
@@ -212,9 +216,25 @@ function getCarInfoById(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
-  /* code here */
+function sortCarInventory(arr) {
+  return arr.sort(function(a, b) {
+    var nameA = a.car_model.toUpperCase(); // ignore upper and lowercase
+    var nameB = b.car_model.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+  
+    // names must be equal
+    return 0;
+
+  })
+
+
 }
+
 
 /**
  * ### Challenge `getModelYears`
@@ -225,12 +245,25 @@ function sortCarInventory(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * getModelYears returns an array containing all the 'car_year's in the inventory.
 */
-function getModelYears(/* code here */) {
-  /* code here */
+function getModelYears(arr) {
+  var carYear = [] 
+  for (let i = 0; i < arr.length; i++) {
+  carYear[i] = arr[i].car_year
 }
+  return carYear
+
+
+}
+
+
+
+
 
 /**
  * ### Challenge `getOlderCars`
+ * 
+ * 
+ * 
  * 
  * @instructions
  * We need a utility to find older cars!
@@ -241,9 +274,18 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, year) {
+  const cars = [];
+  for(let i=0; i < inventory.length; i++){
+    if(inventory[i].car_year <= year){
+      cars.push(inventory[i]);
+    }
+  };
+  return cars;
 }
+
+
+
 
 /**
  * ### Challenge `getGermanCars`
@@ -256,9 +298,20 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(arr) {
+  const cars = [];
+
+
+
 }
+
+
+
+
+
+
+
+
 
 /**
  * ### Challenge refactor to arrow functions
